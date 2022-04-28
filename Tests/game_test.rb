@@ -7,26 +7,38 @@ require 'minitest/autorun'
 class GameTest < Minitest::Test
   def setup
     @test_game = Game.new
-    @test_board = Board.new
+    # @test_board = Board.new
   end
 
-  def teardown
-
-  end
+  def teardown; end
 
   def test_play
     assert_equal(:game_concluded, @test_game.play)
   end
 
-  def test_get_moves
-    # TODO: Remove need to initialize a board
+  def test_request_move
+    @test_game.request_move
 
-    exp = 'b3'
-    assert_equal(exp, @test_game.move)
+    # TODO: Figure out how to stub user input
+
+    assert_equal([%w[- - -], %w[- - -], %w[X - -], @test_game.moves)
   end
 
-  def test_get_blank_moves
-    exp = [%w[- - -], %w[- - -], %w[- - -]]
-    assert_equal(exp, @test_board.moves)
+  def test_display_board
+    # TODO: Figure out how to
+    @test_game.moves = [%w[- - -], %w[- - O], %w[- - -]
+
+    exp = "   a     b     c\n" \
+          "      |     |\n" \
+          "1  -  |  -  |  -\n" \
+          " _____|_____|_____\n" \
+          "      |     |\n" \
+          "2  -  |  -  |  O\n" \
+          " _____|_____|_____\n" \
+          "      |     |\n" \
+          "3  -  |  -  |  -\n" \
+          "      |     |"
+
+    assert_output(exp) {@test_game.display_board}
   end
 end

@@ -7,9 +7,7 @@ class BoardTest < Minitest::Test
     @test_board = Board.new
   end
 
-  def teardown
-    @test_board = nil
-  end
+  def teardown; end
 
   def test_update
     # TODO: Check that board is updated correctly

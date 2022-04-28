@@ -12,7 +12,7 @@ class Game
   end
 
   def play_helper
-    # TODO: Sends messages to make the game work
+    # TODO: Send messages to make the game work
   end
 
   def move

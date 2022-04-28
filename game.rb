@@ -2,7 +2,8 @@
 
 class Game
   def initialize
-
+    # TODO: Choose starting player at random
+    @current_player = :foo
   end
 
   def play

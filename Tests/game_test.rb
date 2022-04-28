@@ -1,28 +1,32 @@
 require './game'
+# FIXME: Remove once board no longer needed
+require './board'
 
 require 'minitest/autorun'
 
 class GameTest < Minitest::Test
   def setup
     @test_game = Game.new
+    @test_board = Board.new
   end
 
   def teardown
-    @test_game = nil
-  end
 
-  def test_board_prints
-    # FIXME: Delete if is private method
-    # TODO: Use assert_output to verify that the board prints as expected
-    skip "Not implemented"
   end
 
   def test_play
     assert_equal(:game_concluded, @test_game.play)
   end
 
-  def test_move
+  def test_get_moves
+    # TODO: Remove need to initialize a board
+
     exp = 'b3'
     assert_equal(exp, @test_game.move)
+  end
+
+  def test_get_blank_moves
+    exp = [%w[- - -], %w[- - -], %w[- - -]]
+    assert_equal(exp, @test_board.moves)
   end
 end

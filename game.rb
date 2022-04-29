@@ -5,8 +5,7 @@ class Game
   attr_reader :board
 
   def initialize
-    # TODO: Choose starting player at random
-    @current_player = starting_player
+    @current_player = 1
     @moves = [%w[- - -], %w[- - -], %w[- - -]]
     @board = default_board
   end
@@ -38,13 +37,15 @@ class Game
         next
       end
 
-      moves[2][0] = 'X' if move == 'a3'
-      moves[1][2] = 'O' if move == 'c2'
+      move_parts = move.split('')
+      move_x_index = Hash['a' => 0, 'b' => 1, 'c' => 2]
+      move_x = move_x_index[move_parts[0]]
+      move_y = move_parts[1].to_i - 1
+
+      moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
 
       break
     end
-
-
   end
 
   def update_board
@@ -66,12 +67,6 @@ class Game
     "      |     |\n" \
     "3  #{moves[2][0]}  |  #{moves[2][1]}  |  #{moves[2][2]}\n" \
     "      |     |\n"
-  end
-
-  def starting_player
-    random = Random.new
-
-    random.rand(1..2)
   end
 
   def switch_player

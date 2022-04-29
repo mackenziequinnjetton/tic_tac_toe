@@ -55,13 +55,14 @@ class GameTest < Minitest::Test
   end
 
   def test_display_board
+    @test_game.current_player = 2
+
     input_to_test_io('c2')
 
     @test_game.make_move
     @test_game.update_board
 
     assert_equal(exp_board, @test_game.board)
-    # assert_output(exp_board) { @test_game.board }
 
     reset_test_io
   end

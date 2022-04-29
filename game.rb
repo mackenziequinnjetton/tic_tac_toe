@@ -9,7 +9,7 @@ class Game
     @current_player = :foo
     @moves = [%w[- - -], %w[- - -], %w[- - -]]
     # TODO: Check book to make sure composition was done correctly
-    @board = default_board
+    # @board = default_board
   end
 
   # TODO: Consider breaking into several smaller methods
@@ -37,11 +37,18 @@ class Game
   end
 
   def make_move
+    puts "Player #{current_player}, please enter your move (ex: b2)"
     move = gets.chomp
 
-    moves[2][0] = 'X' if move == 'c1'
+    moves[2][0] = 'X' if move == 'a3'
+    moves[1][2] = 'O' if move == 'c2'
 
     moves
+  end
+
+  def display_board
+    @board = default_board
+    print board.chomp
   end
 
   private

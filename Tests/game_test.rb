@@ -8,49 +8,60 @@ require 'stringio'
 class GameTest < Minitest::Test
   def setup
     @test_game = Game.new
-    # @test_board = Board.new
+    @test_io = StringIO.new
   end
 
-  def teardown; end
+  def teardown
+    @test_io.close
+    $stdin = STDIN
+  end
+
+  def input_to_test_io(input)
+    @test_io.puts(input)
+    @test_io.rewind
+
+    $stdin = @test_io
+  end
+
+  def reset_test_io
+    @test_io.truncate(0)
+    @test_io.rewind
+  end
 
   def test_play
     assert_equal(:game_concluded, @test_game.play)
   end
 
   def test_make_move
-    move_io = StringIO.new
-    move_io.puts('c1')
-    move_io.rewind
-
-    $stdin = move_io
+    input_to_test_io('a3')
 
     @test_game.make_move
 
-    # TODO: Figure out how to stub user input
-
     assert_equal([%w[- - -], %w[- - -], %w[X - -]], @test_game.moves)
 
-    move_io.close
-    $stdin = STDIN
+    reset_test_io
   end
 
-  # TODO: Consider deleting, as testing play verifies that board is correct
+  def exp_board
+    "   a     b     c\n" \
+    "      |     |\n" \
+    "1  -  |  -  |  -\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "2  -  |  -  |  O\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "3  -  |  -  |  -\n" \
+    "      |     |"
+  end
+
   def test_display_board
-    skip 'Not finished'
-    # TODO: Figure out how to stub user input
-    @test_game.moves = [%w[- - -], %w[- - O], %w[- - -]]
+    input_to_test_io('c2')
 
-    exp = "   a     b     c\n" \
-          "      |     |\n" \
-          "1  -  |  -  |  -\n" \
-          " _____|_____|_____\n" \
-          "      |     |\n" \
-          "2  -  |  -  |  O\n" \
-          " _____|_____|_____\n" \
-          "      |     |\n" \
-          "3  -  |  -  |  -\n" \
-          "      |     |"
+    @test_game.make_move
 
-    assert_output(exp) { @test_game.display_board }
+    assert_output(exp_board) { @test_game.display_board }
+
+    reset_test_io
   end
 end

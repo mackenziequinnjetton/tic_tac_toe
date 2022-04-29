@@ -8,7 +8,6 @@ class Game
     # TODO: Choose starting player at random
     @current_player = starting_player
     @moves = [%w[- - -], %w[- - -], %w[- - -]]
-    # TODO: Check book to make sure composition was done correctly
     @board = default_board
   end
 
@@ -21,7 +20,7 @@ class Game
   def play_helper
     game_concluded = false
 
-    display_board
+    puts board
 
     until game_concluded
       make_move
@@ -30,11 +29,22 @@ class Game
   end
 
   def make_move
-    puts "Player #{current_player}, please enter your move (ex: b2)"
-    move = gets.chomp
+    loop do
+      puts "Player #{current_player}, please enter your move (ex: b2)"
+      move = gets.chomp.downcase
 
-    moves[2][0] = 'X' if move == 'a3'
-    moves[1][2] = 'O' if move == 'c2'
+      unless move.match(/^[a-c][1-3]$/)
+        puts 'Your move was not recognized.'
+        next
+      end
+
+      moves[2][0] = 'X' if move == 'a3'
+      moves[1][2] = 'O' if move == 'c2'
+
+      break
+    end
+
+
   end
 
   def update_board

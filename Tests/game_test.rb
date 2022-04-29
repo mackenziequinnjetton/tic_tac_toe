@@ -16,17 +16,20 @@ class GameTest < Minitest::Test
     assert_equal(:game_concluded, @test_game.play)
   end
 
-  def test_request_move
-    @test_game.request_move
+  def test_make_move
+    @test_game.make_move
 
     # TODO: Figure out how to stub user input
+    $stdin << 'c1'
 
-    assert_equal([%w[- - -], %w[- - -], %w[X - -], @test_game.moves)
+    assert_equal([%w[- - -], %w[- - -], %w[X - -]], @test_game.moves)
   end
 
+  # TODO: Consider deleting, as testing play verifies that board is correct
   def test_display_board
-    # TODO: Figure out how to
-    @test_game.moves = [%w[- - -], %w[- - O], %w[- - -]
+    skip 'Not finished'
+    # TODO: Figure out how to stub user input
+    @test_game.moves = [%w[- - -], %w[- - O], %w[- - -]]
 
     exp = "   a     b     c\n" \
           "      |     |\n" \

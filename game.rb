@@ -16,13 +16,13 @@ class Game
   def default_board
     "   a     b     c\n" \
     "      |     |\n" \
-    "1  #{moves[1][1]}  |  #{moves[1][2]}  |  #{moves[1][3]}\n" \
+    "1  #{moves[0][0]}  |  #{moves[0][1]}  |  #{moves[0][2]}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "2  #{moves[2][1]}  |  #{moves[2][2]}  |  #{moves[2][3]}\n" \
+    "2  #{moves[1][0]}  |  #{moves[1][1]}  |  #{moves[1][2]}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "3  #{moves[3][1]}  |  #{moves[3][2]}  |  #{moves[3][3]}\n" \
+    "3  #{moves[2][0]}  |  #{moves[2][1]}  |  #{moves[2][2]}\n" \
     "      |     |"
   end
 
@@ -37,16 +37,14 @@ class Game
   end
 
   def make_move
-    move = gets
+    move = gets.chomp
 
-    # moves[3][1] = 'X' if move == 'c1'
+    moves[2][0] = 'X' if move == 'c1'
 
     moves
   end
 
   private
 
-  def move
-    puts "Player #{current_player}, what is your move? (ex: b2)"
-  end
+
 end

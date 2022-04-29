@@ -3,6 +3,7 @@ require './game'
 require './board'
 
 require 'minitest/autorun'
+require 'stringio'
 
 class GameTest < Minitest::Test
   def setup
@@ -17,12 +18,20 @@ class GameTest < Minitest::Test
   end
 
   def test_make_move
+    move_io = StringIO.new
+    move_io.puts('c1')
+    move_io.rewind
+
+    $stdin = move_io
+
     @test_game.make_move
 
     # TODO: Figure out how to stub user input
-    $stdin << 'c1'
 
     assert_equal([%w[- - -], %w[- - -], %w[X - -]], @test_game.moves)
+
+    move_io.close
+    $stdin = STDIN
   end
 
   # TODO: Consider deleting, as testing play verifies that board is correct
@@ -42,6 +51,6 @@ class GameTest < Minitest::Test
           "3  -  |  -  |  -\n" \
           "      |     |"
 
-    assert_output(exp) {@test_game.display_board}
+    assert_output(exp) { @test_game.display_board }
   end
 end

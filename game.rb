@@ -23,6 +23,7 @@ class Game
 
     until game_concluded
       make_move
+      check_winner
       switch_player
     end
   end
@@ -69,7 +70,17 @@ class Game
     "      |     |\n"
   end
 
+  def winning_positions_x
+    [
+
+    ]
+  end
+
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)
+  end
+
+  def check_winner
+
   end
 end

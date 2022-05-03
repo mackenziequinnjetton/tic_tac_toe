@@ -48,17 +48,6 @@ class Game
       move_x = move_x_hash[move_parts[0]]
 
       moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
-
-      # move_y = Hash['1' => moves.row_1, '2' => moves.row_2, '3' => moves.row_3]
-      # move_x_helper = move_y[move_parts[1]]
-      # move_x = Hash['a' => move_x_helper.col_a, 'b' => move_x_helper.col_b, 'c' => move_x_helper.col_c]
-
-      # move_x_index = Hash['a' => 0, 'b' => 1, 'c' => 2]
-      # move_x = move_x_index[move_parts[0]]
-      # move_y = move_parts[1].to_i - 1
-
-      # moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
-
       break
     end
   end

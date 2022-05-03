@@ -6,7 +6,8 @@ class Game
 
   def initialize
     @current_player = 1
-    @moves = [%w[- - -], %w[- - -], %w[- - -]]
+    @moves = moveify
+    #@moves = [%w[- - -], %w[- - -], %w[- - -]]
     @board = default_board
   end
 
@@ -55,6 +56,22 @@ class Game
 
   private
 
+  Board = Struct.new(:row_1, :row_2, :row_3, keyword_init: true)
+  BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
+
+  def moveify
+    Board.new(
+      row_1: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
+      row_2: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
+      row_3: BoardRow.new(col_a: '-', col_b: '-', col_c: '-')
+    )
+    # board.map { |board_row| board_row.map { '-' } }
+
+    # moves = [%w[- - -], %w[- - -], %w[- - -]]
+
+    # moves.map { |row| BoardRow.new(row[0], row[1], row[2]) }
+  end
+
   def default_board
     # TODO: Consider breaking into several smaller methods
 
@@ -69,8 +86,6 @@ class Game
     "3  #{moves[2][0]}  |  #{moves[2][1]}  |  #{moves[2][2]}\n" \
     "      |     |\n"
   end
-
-
 
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)

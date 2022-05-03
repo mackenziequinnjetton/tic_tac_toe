@@ -70,11 +70,7 @@ class Game
     "      |     |\n"
   end
 
-  def winning_positions_x
-    [
 
-    ]
-  end
 
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)

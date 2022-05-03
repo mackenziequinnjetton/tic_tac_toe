@@ -79,13 +79,13 @@ class Game
 
     "   a     b     c\n" \
     "      |     |\n" \
-    "1  #{moves[0][0]}  |  #{moves[0][1]}  |  #{moves[0][2]}\n" \
+    "1  #{moves.row_1.col_a}  |  #{moves.row_1.col_b}  |  #{moves.row_1.col_c}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "2  #{moves[1][0]}  |  #{moves[1][1]}  |  #{moves[1][2]}\n" \
+    "2  #{moves.row_2.col_a}  |  #{moves.row_2.col_b}  |  #{moves.row_2.col_c}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "3  #{moves[2][0]}  |  #{moves[2][1]}  |  #{moves[2][2]}\n" \
+    "3  #{moves.row_3.col_a}  |  #{moves.row_3.col_b}  |  #{moves.row_3.col_c}\n" \
     "      |     |\n"
   end
 

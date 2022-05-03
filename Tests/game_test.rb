@@ -21,11 +21,6 @@ class GameTest < Minitest::Test
     $stdin = @test_io
   end
 
-  def reset_test_io
-    @test_io.truncate(0)
-    @test_io.rewind
-  end
-
   def test_play
     skip
     assert_equal(:game_concluded, @test_game.play)
@@ -74,8 +69,6 @@ class GameTest < Minitest::Test
 
     # Test that the board outputs properly
     assert_equal(exp_board, @test_game.board)
-
-    # reset_test_io
   end
 
   def test_display_board

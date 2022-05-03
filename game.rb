@@ -24,7 +24,7 @@ class Game
 
     until game_concluded
       make_move
-      check_winner
+      game_concluded = winner?
       switch_player
     end
   end
@@ -93,7 +93,44 @@ class Game
     self.current_player = (current_player == 1 ? 2 : 1)
   end
 
-  def check_winner
+  def winner?
+    move_strings = %w[X O]
+    winner = false
 
+    win_pattern_1 = move_strings.include?(moves.row_1.col_a) &&
+                    moves.row_2.col_b == moves.row_1.col_a &&
+                    moves.row_3.col_c == moves.row_2.col_b
+
+    win_pattern_2 = move_strings.include?(moves.row_1.col_c) &&
+      moves.row_2.col_b == moves.row_1.col_c &&
+      moves.row_3.col_a == moves.row_2.col_b
+
+    win_pattern_3 = move_strings.include?(moves.row_1.col_a) &&
+      moves.row_2.col_a == moves.row_1.col_a &&
+      moves.row_3.col_a == moves.row_2.col_a
+
+    win_pattern_4 = move_strings.include?(moves.row_1.col_b) &&
+      moves.row_2.col_b == moves.row_1.col_b &&
+      moves.row_3.col_b == moves.row_2.col_b
+
+    win_pattern_5 = move_strings.include?(moves.row_1.col_c) &&
+      moves.row_2.col_c == moves.row_1.col_c &&
+      moves.row_3.col_c == moves.row_2.col_c
+
+    win_pattern_6 = move_strings.include?(moves.row_1.col_a) &&
+      moves.row_1.col_b == moves.row_1.col_a &&
+      moves.row_1.col_c == moves.row_1.col_b
+
+    win_pattern_7 = move_strings.include?(moves.row_2.col_a) &&
+      moves.row_2.col_b == moves.row_2.col_a &&
+      moves.row_2.col_c == moves.row_2.col_b
+
+    win_pattern_8 = move_strings.include?(moves.row_3.col_a) &&
+      moves.row_3.col_b == moves.row_3.col_a &&
+      moves.row_3.col_c == moves.row_3.col_b
+
+    (1..8)
+    true if win_pattern_1 || win_pattern_2 || win_pattern_3 || win_pattern_4 ||
+      win_pattern_5 || win_pattern_6 || win_pattern_7 || win_pattern_8
   end
 end

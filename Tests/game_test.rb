@@ -23,7 +23,7 @@ class GameTest < Minitest::Test
 
   def test_play
     skip
-    assert_equal(:game_concluded, @test_game.play)
+    asspattert(@test_game.play)
   end
 
   Board = Struct.new(:row_1, :row_2, :row_3, keyword_init: true)
@@ -81,7 +81,5 @@ class GameTest < Minitest::Test
     @test_game.update_board
 
     assert_equal(exp_board, @test_game.board)
-
-    reset_test_io
   end
 end

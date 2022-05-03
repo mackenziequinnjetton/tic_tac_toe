@@ -14,8 +14,8 @@ class GameTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def input_to_test_io(input)
-    @test_io.puts(input)
+  def input_to_test_io(*args)
+    args.each { |input| @test_io.puts(input) }
     @test_io.rewind
 
     $stdin = @test_io
@@ -23,7 +23,7 @@ class GameTest < Minitest::Test
 
   def test_play
     skip
-    asspattert(@test_game.play)
+    assert_equal(:winner_p_1 || :winner_p_2 | :draw, @test_game.play)
   end
 
   Board = Struct.new(:row_1, :row_2, :row_3, keyword_init: true)

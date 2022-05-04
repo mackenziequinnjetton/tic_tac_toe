@@ -1,13 +1,17 @@
 require_relative 'board'
 
 class Game
+  private
+
   attr_accessor :current_player, :moves
   attr_reader :board
+
+  public
 
   def initialize
     @current_player = 1
     @moves = moveify
-    #@moves = [%w[- - -], %w[- - -], %w[- - -]]
+    # @moves = [%w[- - -], %w[- - -], %w[- - -]]
     @board = default_board
   end
 
@@ -25,6 +29,8 @@ class Game
 
     result
   end
+
+  private
 
   def play_helper
     winner_p_1 = false
@@ -82,8 +88,6 @@ class Game
     @board = default_board
   end
 
-  private
-
   Board = Struct.new(:row_1, :row_2, :row_3, keyword_init: true)
   BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
 
@@ -122,40 +126,40 @@ class Game
   def winner?
     move_strings = %w[X O]
 
-    win_pattern_1 = move_strings.include?(moves.row_1.col_a) &&
+    win_pattern1 = move_strings.include?(moves.row_1.col_a) &&
                     moves.row_2.col_b == moves.row_1.col_a &&
                     moves.row_3.col_c == moves.row_2.col_b
 
-    win_pattern_2 = move_strings.include?(moves.row_1.col_c) &&
+    win_pattern2 = move_strings.include?(moves.row_1.col_c) &&
                     moves.row_2.col_b == moves.row_1.col_c &&
                     moves.row_3.col_a == moves.row_2.col_b
 
-    win_pattern_3 = move_strings.include?(moves.row_1.col_a) &&
+    win_pattern3 = move_strings.include?(moves.row_1.col_a) &&
                     moves.row_2.col_a == moves.row_1.col_a &&
                     moves.row_3.col_a == moves.row_2.col_a
 
-    win_pattern_4 = move_strings.include?(moves.row_1.col_b) &&
+    win_pattern4 = move_strings.include?(moves.row_1.col_b) &&
                     moves.row_2.col_b == moves.row_1.col_b &&
                     moves.row_3.col_b == moves.row_2.col_b
 
-    win_pattern_5 = move_strings.include?(moves.row_1.col_c) &&
+    win_pattern5 = move_strings.include?(moves.row_1.col_c) &&
                     moves.row_2.col_c == moves.row_1.col_c &&
                     moves.row_3.col_c == moves.row_2.col_c
 
-    win_pattern_6 = move_strings.include?(moves.row_1.col_a) &&
+    win_pattern6 = move_strings.include?(moves.row_1.col_a) &&
                     moves.row_1.col_b == moves.row_1.col_a &&
                     moves.row_1.col_c == moves.row_1.col_b
 
-    win_pattern_7 = move_strings.include?(moves.row_2.col_a) &&
+    win_pattern7 = move_strings.include?(moves.row_2.col_a) &&
                     moves.row_2.col_b == moves.row_2.col_a &&
                     moves.row_2.col_c == moves.row_2.col_b
 
-    win_pattern_8 = move_strings.include?(moves.row_3.col_a) &&
+    win_pattern8 = move_strings.include?(moves.row_3.col_a) &&
                     moves.row_3.col_b == moves.row_3.col_a &&
                     moves.row_3.col_c == moves.row_3.col_b
 
-    return true if win_pattern_1 || win_pattern_2 || win_pattern_3 || win_pattern_4 ||
-                   win_pattern_5 || win_pattern_6 || win_pattern_7 || win_pattern_8
+    return true if win_pattern1 || win_pattern2 || win_pattern3 || win_pattern4 ||
+                   win_pattern5 || win_pattern6 || win_pattern7 || win_pattern8
 
     false
   end

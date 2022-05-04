@@ -58,7 +58,7 @@ class Game
 
     return :winner_p1 if winner_p1
     return :winner_p2 if winner_p2
-    return :draw if draw
+    :draw if draw
   end
 
   def make_move

@@ -21,9 +21,19 @@ class GameTest < Minitest::Test
     $stdin = @test_io
   end
 
-  def test_play
-    skip
-    assert_equal(:winner_p_1 || :winner_p_2 | :draw, @test_game.play)
+  def test_play_win_p_1
+    input_to_test_io('b2', 'b1', 'c3', 'a3', 'a1')
+    assert_equal(:winner_p_1, @test_game.play)
+  end
+
+  def test_play_win_p_2
+    input_to_test_io('a1', 'c3', 'b3', 'c1', 'b1', 'c2')
+    assert_equal(:winner_p_2, @test_game.play)
+  end
+
+  def test_play_draw
+    input_to_test_io('c3', 'b3', 'c2', 'c1', 'b2', 'a1', 'b1', 'a2', 'a3')
+    assert_equal(:draw, @test_game.play)
   end
 
   Board = Struct.new(:row_1, :row_2, :row_3, keyword_init: true)
@@ -51,6 +61,7 @@ class GameTest < Minitest::Test
   end
 
   def test_make_move
+    skip
     input_to_test_io('a3')
 
     @test_game.make_move

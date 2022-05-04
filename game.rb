@@ -27,7 +27,6 @@ class Game
   end
 
   def play_helper
-    game_concluded = false
     winner_p_1 = false
     winner_p_2 = false
     draw = false
@@ -162,8 +161,8 @@ class Game
   end
 
   def draw?
-    true if moves.row_1.col_a && moves.row_1.col_b && moves.row_1.col_c &&
-            moves.row_2.col_a && moves.row_2.col_b && moves.row_2.col_c &&
-            moves.row_3.col_a && moves.row_3.col_b && moves.row_3.col_c
+    true if moves.row_1.col_a != '-' && moves.row_1.col_b != '-' && moves.row_1.col_c != '-' &&
+            moves.row_2.col_a != '-' && moves.row_2.col_b != '-' && moves.row_2.col_c != '-' &&
+            moves.row_3.col_a != '-' && moves.row_3.col_b != '-' && moves.row_3.col_c != '-'
   end
 end

@@ -1,4 +1,8 @@
 class Mover
+  def initialize
+
+  end
+
   def make_move
     loop do
       puts "Player #{current_player}, please enter your move (ex: b2)"

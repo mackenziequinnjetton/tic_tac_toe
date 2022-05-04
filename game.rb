@@ -58,6 +58,7 @@ class Game
 
     return :winner_p1 if winner_p1
     return :winner_p2 if winner_p2
+
     :draw if draw
   end
 

@@ -1,8 +1,10 @@
+require './mover'
+
 require 'minitest/autorun'
 
 class MoverTest < Minitest::Test
   def setup
-    # Do nothing
+    @test_mover = Mover.new
   end
 
   def teardown

@@ -4,12 +4,13 @@ class Game
   private
 
   attr_accessor :current_player, :moves
-  attr_reader :board
+  attr_reader :board, :mover
 
   public
 
   def initialize
     @current_player = 1
+    @mover = Mover.new
     @moves = moveify
     # @moves = [%w[- - -], %w[- - -], %w[- - -]]
     @board = default_board

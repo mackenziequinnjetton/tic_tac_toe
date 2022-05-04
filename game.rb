@@ -41,7 +41,9 @@ class Game
     puts board
 
     loop do
-      make_move
+      move_symbols = mover.make_move(current_player)
+
+      moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
 
       if winner?
         if current_player == 1
@@ -61,29 +63,6 @@ class Game
     return :winner_p2 if winner_p2
 
     :draw if draw
-  end
-
-  def make_move
-    loop do
-      puts "Player #{current_player}, please enter your move (ex: b2)"
-      move = gets.chomp.downcase
-
-      unless move.match(/^[a-c][1-3]$/)
-        puts 'Your move was not recognized.'
-        next
-      end
-
-      move_parts = move.split('')
-
-      move_y_hash = Hash['1' => :row1, '2' => :row2, '3' => :row3]
-      move_x_hash = Hash['a' => :col_a, 'b' => :col_b, 'c' => :col_c]
-
-      move_y = move_y_hash[move_parts[1]]
-      move_x = move_x_hash[move_parts[0]]
-
-      moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
-      break
-    end
   end
 
   def update_board

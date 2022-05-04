@@ -1,9 +1,7 @@
 class Mover
-  def initialize
+  def initialize; end
 
-  end
-
-  def make_move
+  def make_move(current_player)
     loop do
       puts "Player #{current_player}, please enter your move (ex: b2)"
       move = gets.chomp.downcase
@@ -21,8 +19,10 @@ class Mover
       move_y = move_y_hash[move_parts[1]]
       move_x = move_x_hash[move_parts[0]]
 
-      moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
-      break
+      return Hash['row' => move_y, 'col' => move_x]
+
+      # moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
+      # break
     end
   end
 end

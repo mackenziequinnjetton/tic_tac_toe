@@ -11,7 +11,7 @@ class MoverTest < Minitest::Test
     # Do nothing
   end
 
-  def test
+  def test_make_move
     skip 'Not implemented'
   end
 end

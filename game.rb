@@ -1,4 +1,4 @@
-require_relative 'board'
+require_relative 'mover'
 
 class Game
   private

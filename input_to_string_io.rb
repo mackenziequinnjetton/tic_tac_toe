@@ -7,6 +7,5 @@ module InputToStringIo
     string_io.rewind
 
     string_io
-    # $stdin = @test_io
   end
 end

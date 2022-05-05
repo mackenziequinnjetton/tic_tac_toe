@@ -3,10 +3,12 @@ require_relative 'mover'
 class Game
   private
 
-  attr_accessor :current_player, :moves
+  attr_accessor :moves
   attr_reader :board, :mover
 
   public
+
+  attr_accessor :current_player
 
   def initialize
     @current_player = 1

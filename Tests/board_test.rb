@@ -1,17 +1,21 @@
 require './board'
+require './input_to_string_io'
 
 require 'minitest/autorun'
 
 class BoardTest < Minitest::Test
+  include InputToStringIo
+
   def setup
     @test_board = Board.new
   end
 
-  def teardown; end
+  def test_store_move
+    @test_board.store_move(Hash['row' => :rowc, 'col' => move_x])
 
-  def test_update
-    # TODO: Check that board is updated correctly
-    skip 'Not implemented'
+    exp =
+
+    assert_equal(exp, )
   end
 
   def test_display

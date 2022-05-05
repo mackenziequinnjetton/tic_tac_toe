@@ -31,6 +31,10 @@ class GameTest < Minitest::Test
     assert_equal(:draw, @test_game.play)
   end
 
+  def test_implements_current_player
+    assert_respond_to(@test_game, :current_player)
+  end
+
   Board = Struct.new(:row1, :row2, :row3, keyword_init: true)
   BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
 

@@ -3,6 +3,12 @@ require './mover'
 
 require 'minitest/autorun'
 
+class CurrentPlayerDouble
+  def current_player
+    2
+  end
+end
+
 class MoverTest < Minitest::Test
   include InputToStringIo
 
@@ -16,6 +22,11 @@ class MoverTest < Minitest::Test
   end
 
   def test_make_move
-    skip 'Not implemented'
+    current_player = CurrentPlayerDouble.new
+    $stdin = input_to_string_io('b1')
+
+    exp = Hash['row' => :row1, 'col' => :col_b]
+
+    assert_equal(exp, @test_mover.make_move(current_player.current_player))
   end
 end

@@ -15,7 +15,7 @@ class BoardTest < Minitest::Test
 
     exp =
 
-    assert_equal(exp, )
+    assert_equal(exp, Board.moves)
   end
 
   def test_display

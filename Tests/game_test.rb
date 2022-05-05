@@ -1,38 +1,41 @@
 require './game'
+require './input_to_string_io'
 
 require 'minitest/autorun'
 require 'stringio'
 
 class GameTest < Minitest::Test
+  include InputToStringIo
+
   def setup
     @test_game = Game.new
-    @test_io = StringIO.new
+    #@test_io = StringIO.new
   end
 
   def teardown
-    @test_io.close
+    $stdin.close
     $stdin = STDIN
   end
 
-  def input_to_test_io(*args)
-    args.each { |input| @test_io.puts(input) }
-    @test_io.rewind
-
-    $stdin = @test_io
-  end
+  # def input_to_test_io(*args)
+  #   args.each { |input| @test_io.puts(input) }
+  #   @test_io.rewind
+  #
+  #   $stdin = @test_io
+  # end
 
   def test_play_win_p1
-    input_to_test_io('b2', 'b1', 'c3', 'a3', 'a1')
+    $stdin = input_to_string_io('b2', 'b1', 'c3', 'a3', 'a1')
     assert_equal(:winner_p1, @test_game.play)
   end
 
   def test_play_win_p2
-    input_to_test_io('a1', 'c3', 'b3', 'c1', 'b1', 'c2')
+    $stdin = input_to_string_io('a1', 'c3', 'b3', 'c1', 'b1', 'c2')
     assert_equal(:winner_p2, @test_game.play)
   end
 
   def test_play_draw
-    input_to_test_io('c3', 'b3', 'c2', 'c1', 'b2', 'a1', 'b1', 'a2', 'a3')
+    $stdin = input_to_string_io('c3', 'b3', 'c2', 'c1', 'b2', 'a1', 'b1', 'a2', 'a3')
     assert_equal(:draw, @test_game.play)
   end
 
@@ -62,7 +65,7 @@ class GameTest < Minitest::Test
 
   def test_make_move
     skip
-    input_to_test_io('a3')
+    $stdin = input_to_string_io('a3')
 
     @test_game.make_move
     @test_game.update_board
@@ -86,7 +89,7 @@ class GameTest < Minitest::Test
     skip 'Not necessary'
     @test_game.current_player = 2
 
-    input_to_test_io('c2')
+    $stdin = input_to_string_io('c2')
 
     @test_game.make_move
     @test_game.update_board

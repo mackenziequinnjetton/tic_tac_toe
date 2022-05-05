@@ -9,20 +9,12 @@ class GameTest < Minitest::Test
 
   def setup
     @test_game = Game.new
-    #@test_io = StringIO.new
   end
 
   def teardown
     $stdin.close
     $stdin = STDIN
   end
-
-  # def input_to_test_io(*args)
-  #   args.each { |input| @test_io.puts(input) }
-  #   @test_io.rewind
-  #
-  #   $stdin = @test_io
-  # end
 
   def test_play_win_p1
     $stdin = input_to_string_io('b2', 'b1', 'c3', 'a3', 'a1')

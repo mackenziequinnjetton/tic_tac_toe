@@ -11,7 +11,10 @@ class BoardTest < Minitest::Test
   end
 
   def test_store_move
-    @test_board.store_move(Hash['row' => :row2, 'col' => :col_c])
+    @test_board.store_move(
+      hash: Hash[row: :row2, col: :col_c=],
+      current_player: 1
+    )
 
     exp = Board.new(row2: BoardRow.new(col_c: 'X')).row2.col_c
 

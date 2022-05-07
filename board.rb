@@ -1,3 +1,5 @@
+require_relative 'board_row'
+
 require 'enumerable'
 
 class Board
@@ -5,11 +7,11 @@ class Board
 
   attr_accessor :row1, :row2, :row3
 
-  BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
+  # BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
 
-  def initialize
-    @row1 = BoardRow.new(col_a: '-', col_b: '-', col_c: '-')
-    @row2 = BoardRow.new(col_a: '-', col_b: '-', col_c: '-')
-    @row3 = BoardRow.new(col_a: '-', col_b: '-', col_c: '-')
+  def initialize(row1: BoardRow.new, row2: BoardRow.new, row3: BoardRow.new)
+    @row1 = row1
+    @row2 = row2
+    @row3 = row3
   end
 end

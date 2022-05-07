@@ -11,11 +11,11 @@ class BoardTest < Minitest::Test
   end
 
   def test_store_move
-    @test_board.store_move(Hash['row' => :rowc, 'col' => move_x])
+    @test_board.store_move(Hash['row' => :row2, 'col' => :col_c])
 
-    exp =
+    exp = Board.new(row2: BoardRow.new(col_c: 'X')).row2.col_c
 
-    assert_equal(exp, Board.moves)
+    assert_equal(exp, @test_board.row2.col_c)
   end
 
   def test_display

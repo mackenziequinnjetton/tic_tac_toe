@@ -25,10 +25,6 @@ class Mover
     end
   end
 
-  def display
-
-  end
-
   private
 
   def get_move(current_player)

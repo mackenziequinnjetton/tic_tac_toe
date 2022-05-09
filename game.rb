@@ -5,7 +5,7 @@ require_relative 'mover'
 class Game
   private
 
-  attr_accessor :moves
+  attr_accessor :board
   attr_reader :board, :mover
 
   public
@@ -15,9 +15,10 @@ class Game
   def initialize
     @current_player = 1
     @mover = Mover.new
-    @moves = moveify
+    # @moves = moveify
     # @moves = [%w[- - -], %w[- - -], %w[- - -]]
-    @board = default_board
+    # @board = default_board
+    @board = Board.new
   end
 
   def play
@@ -47,8 +48,8 @@ class Game
     loop do
       move_symbols = mover.make_move(current_player)
 
-      #moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
-      moves.store_move(hash: move_symbols, current_player: current_player)
+      # moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
+      board.store_move(hash: move_symbols, current_player: current_player)
 
       if winner?
         if current_player == 1
@@ -70,9 +71,9 @@ class Game
     :draw if draw
   end
 
-  def update_board
-    @board = default_board
-  end
+  # def update_board
+  #   @board = default_board
+  # end
 
   # Board = Struct.new(:row1, :row2, :row3, keyword_init: true)
   # BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
@@ -95,13 +96,13 @@ class Game
 
     "   a     b     c\n" \
     "      |     |\n" \
-    "1  #{moves.row1.col_a}  |  #{moves.row1.col_b}  |  #{moves.row1.col_c}\n" \
+    "1  #{board.row1.col_a}  |  #{board.row1.col_b}  |  #{board.row1.col_c}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "2  #{moves.row2.col_a}  |  #{moves.row2.col_b}  |  #{moves.row2.col_c}\n" \
+    "2  #{board.row2.col_a}  |  #{board.row2.col_b}  |  #{board.row2.col_c}\n" \
     " _____|_____|_____\n" \
     "      |     |\n" \
-    "3  #{moves.row3.col_a}  |  #{moves.row3.col_b}  |  #{moves.row3.col_c}\n" \
+    "3  #{board.row3.col_a}  |  #{board.row3.col_b}  |  #{board.row3.col_c}\n" \
     "      |     |\n"
   end
 
@@ -112,37 +113,37 @@ class Game
   def winner?
     move_strings = %w[X O]
 
-    win_pattern1 = move_strings.include?(moves.row1.col_a) &&
-                   moves.row2.col_b == moves.row1.col_a &&
-                   moves.row3.col_c == moves.row2.col_b
+    win_pattern1 = move_strings.include?(board.row1.col_a) &&
+                   board.row2.col_b == board.row1.col_a &&
+                   board.row3.col_c == board.row2.col_b
 
-    win_pattern2 = move_strings.include?(moves.row1.col_c) &&
-                   moves.row2.col_b == moves.row1.col_c &&
-                   moves.row3.col_a == moves.row2.col_b
+    win_pattern2 = move_strings.include?(board.row1.col_c) &&
+                   board.row2.col_b == board.row1.col_c &&
+                   board.row3.col_a == board.row2.col_b
 
-    win_pattern3 = move_strings.include?(moves.row1.col_a) &&
-                   moves.row2.col_a == moves.row1.col_a &&
-                   moves.row3.col_a == moves.row2.col_a
+    win_pattern3 = move_strings.include?(board.row1.col_a) &&
+                   board.row2.col_a == board.row1.col_a &&
+                   board.row3.col_a == board.row2.col_a
 
-    win_pattern4 = move_strings.include?(moves.row1.col_b) &&
-                   moves.row2.col_b == moves.row1.col_b &&
-                   moves.row3.col_b == moves.row2.col_b
+    win_pattern4 = move_strings.include?(board.row1.col_b) &&
+                   board.row2.col_b == board.row1.col_b &&
+                   board.row3.col_b == board.row2.col_b
 
-    win_pattern5 = move_strings.include?(moves.row1.col_c) &&
-                   moves.row2.col_c == moves.row1.col_c &&
-                   moves.row3.col_c == moves.row2.col_c
+    win_pattern5 = move_strings.include?(board.row1.col_c) &&
+                   board.row2.col_c == board.row1.col_c &&
+                   board.row3.col_c == board.row2.col_c
 
-    win_pattern6 = move_strings.include?(moves.row1.col_a) &&
-                   moves.row1.col_b == moves.row1.col_a &&
-                   moves.row1.col_c == moves.row1.col_b
+    win_pattern6 = move_strings.include?(board.row1.col_a) &&
+                   board.row1.col_b == board.row1.col_a &&
+                   board.row1.col_c == board.row1.col_b
 
-    win_pattern7 = move_strings.include?(moves.row2.col_a) &&
-                   moves.row2.col_b == moves.row2.col_a &&
-                   moves.row2.col_c == moves.row2.col_b
+    win_pattern7 = move_strings.include?(board.row2.col_a) &&
+                   board.row2.col_b == board.row2.col_a &&
+                   board.row2.col_c == board.row2.col_b
 
-    win_pattern8 = move_strings.include?(moves.row3.col_a) &&
-                   moves.row3.col_b == moves.row3.col_a &&
-                   moves.row3.col_c == moves.row3.col_b
+    win_pattern8 = move_strings.include?(board.row3.col_a) &&
+                   board.row3.col_b == board.row3.col_a &&
+                   board.row3.col_c == board.row3.col_b
 
     return true if win_pattern1 || win_pattern2 || win_pattern3 || win_pattern4 ||
                    win_pattern5 || win_pattern6 || win_pattern7 || win_pattern8
@@ -151,8 +152,8 @@ class Game
   end
 
   def draw?
-    true if moves.row1.col_a != '-' && moves.row1.col_b != '-' && moves.row1.col_c != '-' &&
-            moves.row2.col_a != '-' && moves.row2.col_b != '-' && moves.row2.col_c != '-' &&
-            moves.row3.col_a != '-' && moves.row3.col_b != '-' && moves.row3.col_c != '-'
+    true if board.row1.col_a != '-' && board.row1.col_b != '-' && board.row1.col_c != '-' &&
+            board.row2.col_a != '-' && board.row2.col_b != '-' && board.row2.col_c != '-' &&
+            board.row3.col_a != '-' && board.row3.col_b != '-' && board.row3.col_c != '-'
   end
 end

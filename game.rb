@@ -1,3 +1,5 @@
+require_relative 'board'
+require_relative 'board_row'
 require_relative 'mover'
 
 class Game
@@ -45,7 +47,8 @@ class Game
     loop do
       move_symbols = mover.make_move(current_player)
 
-      moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
+      #moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
+      moves.store_move(hash: move_symbols, current_player: current_player)
 
       if winner?
         if current_player == 1
@@ -71,8 +74,8 @@ class Game
     @board = default_board
   end
 
-  Board = Struct.new(:row1, :row2, :row3, keyword_init: true)
-  BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
+  # Board = Struct.new(:row1, :row2, :row3, keyword_init: true)
+  # BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
 
   def moveify
     Board.new(

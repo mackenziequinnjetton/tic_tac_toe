@@ -21,8 +21,30 @@ class BoardTest < Minitest::Test
     assert_equal(exp, @test_board.row2.col_c)
   end
 
+  def test_display_exp
+    "   a     b     c\n" \
+    "      |     |\n" \
+    "1  -  |  X  |  -\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "2  -  |  -  |  -\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "3  O  |  -  |  -\n" \
+    "      |     |\n"
+  end
+
   def test_display
-    # TODO: Print current board
-    skip 'Not implemented'
+    @test_board.store_move(
+      hash: Hash[row: :row1, col: :col_b=],
+      current_player: 1
+    )
+
+    @test_board.store_move(
+      hash: Hash[row: :row3, col: :col_a=],
+      current_player: 2
+    )
+
+    assert_equal(test_display_exp, @test_board.display)
   end
 end

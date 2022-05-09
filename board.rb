@@ -19,4 +19,8 @@ class Board
 
     send(row).send(col, (current_player == 1 ? 'X' : 'O'))
   end
+
+  def display
+
+  end
 end

@@ -5,12 +5,12 @@ require_relative 'mover'
 class Game
   private
 
-  attr_accessor :board
   attr_reader :board, :mover
+  attr_writer :current_player
 
   public
 
-  attr_accessor :current_player
+  attr_reader :current_player
 
   def initialize
     @current_player = 1
@@ -89,21 +89,6 @@ class Game
     # moves = [%w[- - -], %w[- - -], %w[- - -]]
 
     # moves.map { |row| BoardRow.new(row[0], row[1], row[2]) }
-  end
-
-  def default_board
-    # TODO: Consider breaking into several smaller methods
-
-    "   a     b     c\n" \
-    "      |     |\n" \
-    "1  #{board.row1.col_a}  |  #{board.row1.col_b}  |  #{board.row1.col_c}\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "2  #{board.row2.col_a}  |  #{board.row2.col_b}  |  #{board.row2.col_c}\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "3  #{board.row3.col_a}  |  #{board.row3.col_b}  |  #{board.row3.col_c}\n" \
-    "      |     |\n"
   end
 
   def switch_player

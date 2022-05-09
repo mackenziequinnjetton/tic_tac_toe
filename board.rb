@@ -32,4 +32,10 @@ class Board
     "3  #{row3.col_a}  |  #{row3.col_b}  |  #{row3.col_c}\n" \
     "      |     |\n"
   end
+
+  def each
+    yield row1
+    yield row2
+    yield row3
+  end
 end

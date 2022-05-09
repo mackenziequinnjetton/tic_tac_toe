@@ -15,9 +15,6 @@ class Game
   def initialize
     @current_player = 1
     @mover = Mover.new
-    # @moves = moveify
-    # @moves = [%w[- - -], %w[- - -], %w[- - -]]
-    # @board = default_board
     @board = Board.new
   end
 
@@ -43,12 +40,11 @@ class Game
     winner_p2 = false
     draw = false
 
-    puts board
+    puts board.display
 
     loop do
       move_symbols = mover.make_move(current_player)
 
-      # moves[move_symbols['row']][move_symbols['col']] = (current_player == 1 ? 'X' : 'O')
       board.store_move(hash: move_symbols, current_player: current_player)
 
       if winner?
@@ -137,8 +133,8 @@ class Game
   end
 
   def draw?
-    true if board.row1.col_a != '-' && board.row1.col_b != '-' && board.row1.col_c != '-' &&
-            board.row2.col_a != '-' && board.row2.col_b != '-' && board.row2.col_c != '-' &&
-            board.row3.col_a != '-' && board.row3.col_b != '-' && board.row3.col_c != '-'
+    return true if board.all? { |row| row.all? { |col| col != '-' } }
+
+    false
   end
 end

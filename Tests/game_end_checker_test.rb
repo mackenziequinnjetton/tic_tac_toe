@@ -7,23 +7,27 @@ class GameEndCheckerTest < Minitest::Test
     @test_game_end_checker = GameEndChecker.new
   end
 
-  def teardown
-    # Do nothing
-  end
-
   def test_winner_true
-    assert(@test_game_end_checker.winner?)
+    test_moves = [%w[X - O], %w[X O -], %w[X - -]]
+
+    assert(@test_game_end_checker.winner?(test_moves))
   end
 
   def test_winner_false
-    refute(@test_game_end_checker.winner?)
+    test_moves = [%w[X - O], %w[X - -], %w[O - -]]
+
+    refute(@test_game_end_checker.winner?(test_moves))
   end
 
   def test_draw_true
-    assert(@test_game_end_checker.draw?)
+    test_moves = [%w[X O X], %w[X X O], %w[O X O]]
+
+    assert(@test_game_end_checker.draw?(test_moves))
   end
 
   def test_draw_false
-    refute(@test_game_end_checker.draw?)
+    test_moves = [%w[- X -], %w[O O X], %w[- O -]]
+
+    refute(@test_game_end_checker.draw?(test_moves))
   end
 end

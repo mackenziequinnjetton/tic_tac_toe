@@ -21,14 +21,11 @@ class Board
   end
 
   def moves
-    moves = []
-
-    counter = 0
+    moves = hash[]
 
     each do |row|
-      moves.push []
-      row.each { |col| moves[counter].push(col) }
-      counter += 1
+      moves[row] = hash[]
+      row.each { |col| moves[row][col] = col }
     end
 
     moves

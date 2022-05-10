@@ -20,6 +20,26 @@ class Board
     send(row).send(col, (current_player == 1 ? 'X' : 'O'))
   end
 
+  def moves
+    moves = []
+
+    counter = 0
+
+    each do |row|
+      moves.push []
+      row.each { |col| moves[counter].push(col) }
+      counter += 1
+    end
+
+    moves
+
+    # [
+    #   [row1.col_a, row1.col_b, row1.col_c],
+    #   [row2.col_a, row2.col_b, row2.col_c],
+    #   [row3.col_a, row3.col_b, row3.col_c]
+    # ]
+  end
+
   def display
     "   a     b     c\n" \
     "      |     |\n" \

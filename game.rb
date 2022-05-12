@@ -1,11 +1,7 @@
-require_relative 'board'
-require_relative 'board_row'
-require_relative 'mover'
-
 class Game
   private
 
-  attr_reader :board, :mover
+  attr_reader :board, :game_end_checker, :mover
   attr_writer :current_player
 
   public
@@ -16,6 +12,7 @@ class Game
     @current_player = 1
     @mover = Mover.new
     @board = Board.new
+    @game_end_checker = GameEndChecker.new
   end
 
   def play
@@ -47,14 +44,14 @@ class Game
 
       board.store_move(hash: move_symbols, current_player: current_player)
 
-      if winner?
+      if game_end_checker.winner?(board)
         if current_player == 1
           winner_p1 = true
         else
           winner_p2 = true
         end
         break
-      elsif draw?
+      elsif game_end_checker.draw?(board)
         draw = true
         break
       end
@@ -89,52 +86,5 @@ class Game
 
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)
-  end
-
-  def winner?
-    move_strings = %w[X O]
-
-    win_pattern1 = move_strings.include?(board.row1.col_a) &&
-                   board.row2.col_b == board.row1.col_a &&
-                   board.row3.col_c == board.row2.col_b
-
-    win_pattern2 = move_strings.include?(board.row1.col_c) &&
-                   board.row2.col_b == board.row1.col_c &&
-                   board.row3.col_a == board.row2.col_b
-
-    win_pattern3 = move_strings.include?(board.row1.col_a) &&
-                   board.row2.col_a == board.row1.col_a &&
-                   board.row3.col_a == board.row2.col_a
-
-    win_pattern4 = move_strings.include?(board.row1.col_b) &&
-                   board.row2.col_b == board.row1.col_b &&
-                   board.row3.col_b == board.row2.col_b
-
-    win_pattern5 = move_strings.include?(board.row1.col_c) &&
-                   board.row2.col_c == board.row1.col_c &&
-                   board.row3.col_c == board.row2.col_c
-
-    win_pattern6 = move_strings.include?(board.row1.col_a) &&
-                   board.row1.col_b == board.row1.col_a &&
-                   board.row1.col_c == board.row1.col_b
-
-    win_pattern7 = move_strings.include?(board.row2.col_a) &&
-                   board.row2.col_b == board.row2.col_a &&
-                   board.row2.col_c == board.row2.col_b
-
-    win_pattern8 = move_strings.include?(board.row3.col_a) &&
-                   board.row3.col_b == board.row3.col_a &&
-                   board.row3.col_c == board.row3.col_b
-
-    return true if win_pattern1 || win_pattern2 || win_pattern3 || win_pattern4 ||
-                   win_pattern5 || win_pattern6 || win_pattern7 || win_pattern8
-
-    false
-  end
-
-  def draw?
-    return true if board.all? { |row| row.all? { |col| col != '-' } }
-
-    false
   end
 end

@@ -21,7 +21,7 @@ class BoardTest < Minitest::Test
     assert_equal(exp, @test_board.row2.col_c)
   end
 
-  def test_display_exp
+  def display_exp
     "   a     b     c\n" \
     "      |     |\n" \
     "1  -  |  X  |  -\n" \
@@ -45,6 +45,10 @@ class BoardTest < Minitest::Test
       current_player: 2
     )
 
-    assert_equal(test_display_exp, @test_board.display)
+    assert_equal(display_exp, @test_board.display)
+  end
+
+  def test_implements_each
+    assert_respond_to(@test_board, :each)
   end
 end

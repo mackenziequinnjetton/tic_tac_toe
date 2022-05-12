@@ -31,8 +31,6 @@ class Board
     "      |     |\n"
   end
 
-  private
-
   def each
     yield row1
     yield row2

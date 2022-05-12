@@ -35,14 +35,14 @@ class GameEndChecker
 
   def win_pattern_array(board:, str:)
     [
-      win_patterns.win_pattern1(board: board, str: str),
-      win_patterns.win_pattern2(board: board, str: str),
-      win_patterns.win_pattern3(board: board, str: str),
-      win_patterns.win_pattern4(board: board, str: str),
-      win_patterns.win_pattern5(board: board, str: str),
-      win_patterns.win_pattern6(board: board, str: str),
-      win_patterns.win_pattern7(board: board, str: str),
-      win_patterns.win_pattern8(board: board, str: str)
+      win_patterns.win_pattern1?(board: board, str: str),
+      win_patterns.win_pattern2?(board: board, str: str),
+      win_patterns.win_pattern3?(board: board, str: str),
+      win_patterns.win_pattern4?(board: board, str: str),
+      win_patterns.win_pattern5?(board: board, str: str),
+      win_patterns.win_pattern6?(board: board, str: str),
+      win_patterns.win_pattern7?(board: board, str: str),
+      win_patterns.win_pattern8?(board: board, str: str)
     ]
   end
 end

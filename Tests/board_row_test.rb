@@ -10,20 +10,4 @@ class BoardRowTest < Minitest::Test
   def teardown
     # Do nothing
   end
-
-  def test_implements_each
-    assert_respond_to(@test_board_row, :each)
-  end
-
-  def test_implements_col_a
-    assert_respond_to(@test_board_row, :col_a)
-  end
-
-  def test_implements_col_b
-    assert_respond_to(@test_board_row, :col_b)
-  end
-
-  def test_implements_col_c
-    assert_respond_to(@test_board_row, :col_c)
-  end
 end

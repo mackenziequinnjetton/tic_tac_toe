@@ -1,5 +1,4 @@
 module InputToStringIo
-  # TODO: Get method working with a StringIo
   def input_to_string_io(*args)
     string_io = StringIO.new
 

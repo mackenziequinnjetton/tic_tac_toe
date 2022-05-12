@@ -15,7 +15,7 @@ class MoverTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def current_player_double
+  def current_player
     2
   end
 
@@ -25,6 +25,6 @@ class MoverTest < Minitest::Test
 
     exp = Hash[row: :row1, col: :col_b=]
 
-    assert_equal(exp, @test_mover.make_move(current_player_double))
+    assert_equal(exp, @test_mover.make_move(current_player))
   end
 end

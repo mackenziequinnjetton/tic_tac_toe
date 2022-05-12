@@ -47,20 +47,4 @@ class BoardTest < Minitest::Test
 
     assert_equal(display_exp, @test_board.display)
   end
-
-  def test_implements_each
-    assert_respond_to(@test_board, :each)
-  end
-
-  def test_implements_row1
-    assert_respond_to(@test_board, :row1)
-  end
-
-  def test_implements_row2
-    assert_respond_to(@test_board, :row2)
-  end
-
-  def test_implements_row3
-    assert_respond_to(@test_board, :row3)
-  end
 end

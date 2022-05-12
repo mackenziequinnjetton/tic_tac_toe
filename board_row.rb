@@ -9,6 +9,8 @@ class BoardRow
     @col_c = col_c
   end
 
+  private
+
   def each
     yield col_a
     yield col_b

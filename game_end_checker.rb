@@ -13,6 +13,8 @@ class GameEndChecker
   end
 
   def winner?(board:, current_player:)
+    current_player_string = current_player_string(current_player)
+
     win_pattern2 = move_strings.include?(board.row1.col_c) &&
                    board.row2.col_b == board.row1.col_c &&
                    board.row3.col_a == board.row2.col_b
@@ -64,6 +66,10 @@ class GameEndChecker
   end
 
   private
+
+  def current_player_string(current_player)
+    current_player == 1 ? 'X' : 'O'
+  end
 
   def win_pattern1(board:, current_player:)
     current_player_string = (current_player == 1 ? move_strings[:player1] : move_strings[:player2])

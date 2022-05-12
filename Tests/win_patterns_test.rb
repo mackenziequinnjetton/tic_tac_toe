@@ -10,6 +10,8 @@ class WinPatternsTest < Minitest::Test
   end
 
   def test_win_pattern1_true
+
+
     assert
   end
 end

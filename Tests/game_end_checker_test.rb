@@ -51,7 +51,7 @@ class GameEndCheckerTest < Minitest::Test
     @test_board_double.row2.col_b = 'O'
     @test_board_double.row3.col_a = 'X'
 
-    assert(@test_game_end_checker.winner?(@test_board_double))
+    assert(@test_game_end_checker.winner?(board: @test_board_double, current_player: 1))
   end
 
   def test_winner_false
@@ -60,7 +60,7 @@ class GameEndCheckerTest < Minitest::Test
     @test_board_double.row2.col_a = 'X'
     @test_board_double.row3.col_a = 'O'
 
-    refute(@test_game_end_checker.winner?(@test_board_double))
+    refute(@test_game_end_checker.winner?(board: @test_board_double, current_player: 2))
   end
 
   def test_draw_true

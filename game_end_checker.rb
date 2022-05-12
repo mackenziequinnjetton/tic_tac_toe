@@ -1,7 +1,7 @@
 class GameEndChecker
   private
 
-  attr_reader :move_strings
+  attr_reader :move_strings, :win_patterns
 
   public
 
@@ -9,6 +9,7 @@ class GameEndChecker
     # @move_strings = %w[X O]
 
     @move_strings = { player1: 'X', player2: 'O' }
+    @win_patterns = WinPatterns.new
   end
 
   def winner?(board:, current_player:)

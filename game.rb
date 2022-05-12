@@ -44,7 +44,7 @@ class Game
 
       board.store_move(hash: move_symbols, current_player: current_player)
 
-      if game_end_checker.winner?(board)
+      if game_end_checker.winner?(board: board, current_player: current_player)
         if current_player == 1
           winner_p1 = true
         else

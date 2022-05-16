@@ -58,38 +58,4 @@ class GameTest < Minitest::Test
     "3  X  |  -  |  -\n" \
     "      |     |\n"
   end
-
-  def test_make_move
-    skip
-    $stdin = input_to_string_io('a3')
-
-    @test_game.make_move
-    @test_game.update_board
-
-    # Test that the values in each position in each Struct are the same
-    assert_equal(exp_moves.row_1.col_a, @test_game.moves.row1.col_a)
-    assert_equal(exp_moves.row_1.col_b, @test_game.moves.row1.col_b)
-    assert_equal(exp_moves.row_1.col_c, @test_game.moves.row1.col_c)
-    assert_equal(exp_moves.row_2.col_a, @test_game.moves.row2.col_a)
-    assert_equal(exp_moves.row_2.col_b, @test_game.moves.row2.col_b)
-    assert_equal(exp_moves.row_2.col_c, @test_game.moves.row2.col_c)
-    assert_equal(exp_moves.row_3.col_a, @test_game.moves.row3.col_a)
-    assert_equal(exp_moves.row_3.col_b, @test_game.moves.row3.col_b)
-    assert_equal(exp_moves.row_3.col_c, @test_game.moves.row3.col_c)
-
-    # Test that the board outputs properly
-    assert_equal(exp_board, @test_game.board)
-  end
-
-  def test_display_board
-    skip 'Not necessary'
-    @test_game.current_player = 2
-
-    $stdin = input_to_string_io('c2')
-
-    @test_game.make_move
-    @test_game.update_board
-
-    assert_equal(exp_board, @test_game.board)
-  end
 end

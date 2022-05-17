@@ -9,10 +9,6 @@ class WinPatternsTest < Minitest::Test
     @test_board = Board.new
   end
 
-  def teardown
-    # Do nothing
-  end
-
   def test_win_pattern1_true
     @test_board.row1.col_a = 'X'
     @test_board.row2.col_b = 'X'

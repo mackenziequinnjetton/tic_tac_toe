@@ -49,6 +49,6 @@ class GameEndCheckerTest < Minitest::Test
     @test_board.row2.col_c = 'X'
     @test_board.row3.col_b = 'O'
 
-    refute(@test_game_end_checker.draw?(test_moves_double))
+    refute(@test_game_end_checker.draw?(@test_board))
   end
 end

@@ -3,14 +3,11 @@ require_relative 'win_patterns'
 class GameEndChecker
   private
 
-  attr_reader :move_strings, :win_patterns
+  attr_reader :win_patterns
 
   public
 
   def initialize
-    # @move_strings = %w[X O]
-
-    @move_strings = { player1: 'X', player2: 'O' }
     @win_patterns = WinPatterns.new
   end
 

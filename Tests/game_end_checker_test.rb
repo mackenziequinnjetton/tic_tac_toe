@@ -43,8 +43,6 @@ class GameEndCheckerTest < Minitest::Test
   end
 
   def test_draw_false
-    test_moves_double = [%w[- X -], %w[O O X], %w[- O -]]
-
     @test_board.row1.col_b = 'X'
     @test_board.row2.col_a = 'O'
     @test_board.row2.col_b = 'O'

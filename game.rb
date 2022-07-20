@@ -48,6 +48,8 @@ class Game
 
       return game_end_result if %i[winner_p1 winner_p2 draw].include? game_end_result
 
+      puts board.display
+
       switch_player
     end
   end

@@ -16,10 +16,15 @@ class Game
   end
 
   def play
+    welcome_message
     print_result(play_helper)
   end
 
   private
+
+  def welcome_message
+    puts 'Welcome to Tic Tac Toe!'
+  end
 
   def play_helper
     puts board.display

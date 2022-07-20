@@ -1,3 +1,7 @@
+require './mover'
+require './board'
+require './game_end_checker'
+
 class Game
   private
 

@@ -9,26 +9,28 @@ class GameEndCheckerTest < Minitest::Test
     @test_board = Board.new
   end
 
-  def test_winner_true
+  def test_check_game_end_winner_p1
     @test_board.row1.col_a = 'X'
     @test_board.row1.col_c = 'O'
     @test_board.row2.col_a = 'X'
     @test_board.row2.col_b = 'O'
     @test_board.row3.col_a = 'X'
 
-    assert(@test_game_end_checker.winner?(board: @test_board, current_player: 1))
+    assert_equal(:winner_p1, @test_game_end_checker.check_game_end(board: @test_board, current_player: 1))
   end
 
-  def test_winner_false
+  def test_check_game_end_winner_p2
     @test_board.row1.col_a = 'X'
     @test_board.row1.col_c = 'O'
     @test_board.row2.col_a = 'X'
     @test_board.row3.col_a = 'O'
+    @test_board.row3.col_c = 'X'
+    @test_board.row2.col_b = 'O'
 
-    refute(@test_game_end_checker.winner?(board: @test_board, current_player: 2))
+    assert_equal(:winner_p2, @test_game_end_checker.check_game_end(board: @test_board, current_player: 2))
   end
 
-  def test_draw_true
+  def test_check_game_end_draw
     @test_board.row1.col_a = 'X'
     @test_board.row1.col_b = 'O'
     @test_board.row1.col_c = 'X'
@@ -39,16 +41,16 @@ class GameEndCheckerTest < Minitest::Test
     @test_board.row3.col_b = 'X'
     @test_board.row3.col_c = 'O'
 
-    assert(@test_game_end_checker.draw?(@test_board))
+    assert_equal(:draw, @test_game_end_checker.check_game_end(board: @test_board, current_player: 1))
   end
 
-  def test_draw_false
+  def test_check_game_end_none
     @test_board.row1.col_b = 'X'
     @test_board.row2.col_a = 'O'
     @test_board.row2.col_b = 'O'
     @test_board.row2.col_c = 'X'
     @test_board.row3.col_b = 'O'
 
-    refute(@test_game_end_checker.draw?(@test_board))
+    assert_nil(@test_game_end_checker.check_game_end(board: @test_board, current_player: 2))
   end
 end

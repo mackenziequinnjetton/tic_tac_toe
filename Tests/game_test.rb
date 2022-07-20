@@ -34,28 +34,4 @@ class GameTest < Minitest::Test
   def test_implements_current_player
     assert_respond_to(@test_game, :current_player)
   end
-
-  Board = Struct.new(:row1, :row2, :row3, keyword_init: true)
-  BoardRow = Struct.new(:col_a, :col_b, :col_c, keyword_init: true)
-
-  def exp_moves
-    Board.new(
-      row1: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
-      row2: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
-      row3: BoardRow.new(col_a: 'X', col_b: '-', col_c: '-')
-    )
-  end
-
-  def exp_board
-    "   a     b     c\n" \
-    "      |     |\n" \
-    "1  -  |  -  |  -\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "2  -  |  -  |  -\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "3  X  |  -  |  -\n" \
-    "      |     |\n"
-  end
 end

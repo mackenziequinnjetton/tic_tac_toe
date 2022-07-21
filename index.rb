@@ -1,3 +1,3 @@
-require './game'
+require_relative 'game'
 
 Game.new

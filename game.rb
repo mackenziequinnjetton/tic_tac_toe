@@ -1,6 +1,6 @@
-require './mover'
-require './board'
-require './game_end_checker'
+require_relative 'mover'
+require_relative 'board'
+require_relative 'game_end_checker'
 
 class Game
   private

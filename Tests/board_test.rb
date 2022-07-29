@@ -45,6 +45,6 @@ class BoardTest < Minitest::Test
       current_player: 2
     )
 
-    assert_equal(display_exp, @test_board.display)
+    assert_output(display_exp) { @test_board.display }
   end
 end

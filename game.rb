@@ -31,7 +31,7 @@ class Game
   end
 
   def play_helper
-    puts board.display
+    board.display
 
     game_loop
   end
@@ -46,13 +46,15 @@ class Game
 
       return game_end_result if %i[winner_p1 winner_p2 draw].include? game_end_result
 
-      puts board.display
+      board.display
 
       switch_player
     end
   end
 
   def print_result(result)
+    board.display
+
     case result
     when :winner_p1
       puts 'Player 1 wins!'

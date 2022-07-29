@@ -22,7 +22,7 @@ class MoverTest < Minitest::Test
   def test_make_move
     $stdin = input_to_string_io('b1')
 
-    exp = Hash[row: :row1, col: :col_b=]
+    exp = 'b1'
 
     assert_equal(exp, @test_mover.make_move(current_player))
   end

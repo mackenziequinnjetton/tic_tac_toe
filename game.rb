@@ -38,9 +38,9 @@ class Game
 
   def game_loop
     loop do
-      move_symbols = mover.make_move(current_player)
+      move = mover.make_move(current_player)
 
-      board.store_move(hash: move_symbols, current_player: current_player)
+      board.process_move(move: move, current_player: current_player)
 
       game_end_result = game_end_checker.check_game_end(board: board, current_player: current_player)
 

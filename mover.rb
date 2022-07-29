@@ -10,15 +10,7 @@ class Mover
         next
       end
 
-      move_parts = move.split('')
-
-      move_y_hash = Hash['1' => :row1, '2' => :row2, '3' => :row3]
-      move_x_hash = Hash['a' => :col_a=, 'b' => :col_b=, 'c' => :col_c=]
-
-      move_y = move_y_hash[move_parts[1]]
-      move_x = move_x_hash[move_parts[0]]
-
-      return Hash[row: move_y, col: move_x]
+      return move
     end
   end
 

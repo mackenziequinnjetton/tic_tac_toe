@@ -10,9 +10,9 @@ class BoardTest < Minitest::Test
     @test_board = Board.new
   end
 
-  def test_store_move
-    @test_board.store_move(
-      hash: Hash[row: :row2, col: :col_c=],
+  def test_process_move
+    @test_board.process_move(
+      move: 'c2',
       current_player: 1
     )
 
@@ -35,13 +35,13 @@ class BoardTest < Minitest::Test
   end
 
   def test_display
-    @test_board.store_move(
-      hash: Hash[row: :row1, col: :col_b=],
+    @test_board.process_move(
+      move: 'b1',
       current_player: 1
     )
 
-    @test_board.store_move(
-      hash: Hash[row: :row3, col: :col_a=],
+    @test_board.process_move(
+      move: 'a3',
       current_player: 2
     )
 

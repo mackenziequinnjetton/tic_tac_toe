@@ -65,14 +65,6 @@ class Game
     result
   end
 
-  def moveify
-    Board.new(
-      row1: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
-      row2: BoardRow.new(col_a: '-', col_b: '-', col_c: '-'),
-      row3: BoardRow.new(col_a: '-', col_b: '-', col_c: '-')
-    )
-  end
-
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)
   end

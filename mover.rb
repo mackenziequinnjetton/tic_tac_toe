@@ -19,9 +19,6 @@ class Mover
       move_x = move_x_hash[move_parts[0]]
 
       return Hash[row: move_y, col: move_x]
-
-      # moves[move_y][move_x] = (current_player == 1 ? 'X' : 'O')
-      # break
     end
   end
 

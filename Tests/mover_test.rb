@@ -20,7 +20,6 @@ class MoverTest < Minitest::Test
   end
 
   def test_make_move
-    # current_player = CurrentPlayerDouble.new
     $stdin = input_to_string_io('b1')
 
     exp = Hash[row: :row1, col: :col_b=]

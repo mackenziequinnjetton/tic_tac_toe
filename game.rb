@@ -17,8 +17,6 @@ class Game
     @mover = Mover.new
     @board = Board.new
     @game_end_checker = GameEndChecker.new
-
-    play
   end
 
   def play

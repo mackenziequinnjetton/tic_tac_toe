@@ -6,6 +6,6 @@ class Player
   end
 
   def get_move
-
+    'c2'
   end
 end

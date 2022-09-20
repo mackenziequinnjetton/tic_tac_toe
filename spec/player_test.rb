@@ -14,4 +14,8 @@ class PlayerTest < Minitest::Test
   def test_player_implements_get_move
     assert_respond_to(@test_player, :get_move)
   end
+
+  def test_get_move
+    assert_equal('c2', @test_player.get_move)
+  end
 end

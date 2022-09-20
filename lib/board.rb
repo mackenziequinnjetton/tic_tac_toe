@@ -1,4 +1,4 @@
-require_relative '../lib/board_row'
+require_relative 'board_row'
 
 class Board
   include Enumerable

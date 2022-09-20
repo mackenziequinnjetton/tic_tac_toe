@@ -1,10 +1,9 @@
 require 'game'
 require 'input_to_string_io'
 
+
 require 'minitest/autorun'
 require 'stringio'
-
-Player = Struct.new(:comp_player?)
 
 class GameTest < Minitest::Test
   include InputToStringIo
@@ -35,11 +34,5 @@ class GameTest < Minitest::Test
 
   def test_implements_current_player
     assert_respond_to(@test_game, :current_player)
-  end
-
-  def test_detect_comp_player
-    test_player = Player.new(true)
-
-    assert(test_player.comp_player?)
   end
 end

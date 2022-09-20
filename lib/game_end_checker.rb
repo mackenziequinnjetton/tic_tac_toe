@@ -1,4 +1,4 @@
-require_relative 'win_patterns'
+require_relative '../lib/win_patterns'
 
 class GameEndChecker
   private

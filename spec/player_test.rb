@@ -6,11 +6,7 @@ require 'minitest/autorun'
 class PlayerTest < Minitest::Test
   include InputToStringIo
   def setup
-    @test_player = Player.new(true)
-  end
-
-  def test_detect_comp_player
-    assert(@test_player.comp_player)
+    @test_player = Player.new
   end
 
   def test_player_implements_get_move

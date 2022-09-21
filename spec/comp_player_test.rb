@@ -13,4 +13,8 @@ class CompPlayerTest < Minitest::Test
   def test_comp_player_implements_get_move
     assert_respond_to(@test_comp_player, :get_move)
   end
+
+  def test_comp_player_gets_top_left_move
+    assert_equal('a1', @test_comp_player.get_move)
+  end
 end

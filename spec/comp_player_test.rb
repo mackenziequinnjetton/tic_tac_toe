@@ -15,6 +15,8 @@ class CompPlayerTest < Minitest::Test
   end
 
   def test_comp_player_gets_top_left_move
-    assert_equal('a1', @test_comp_player.get_move)
+    current_player = 1
+
+    assert_equal('a1', @test_comp_player.get_move(current_player: 1))
   end
 end

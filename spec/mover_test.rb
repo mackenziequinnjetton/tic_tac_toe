@@ -15,15 +15,13 @@ class MoverTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def current_player
-    2
-  end
-
   def test_make_move
     $stdin = input_to_string_io('b1')
+    player = CompPlayer.new
+    current_player = 1
 
-    exp = 'b1'
+    exp = 'a1'
 
-    assert_equal(exp, @test_mover.make_move(current_player))
+    assert_equal(exp, @test_mover.make_move(player: player, current_player: current_player))
   end
 end

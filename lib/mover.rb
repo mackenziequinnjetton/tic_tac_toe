@@ -1,9 +1,9 @@
 class Mover
   def initialize; end
 
-  def make_move(player:, current_player:)
+  def make_move(current_player)
     loop do
-      move = player.get_move(current_player)
+      move = get_move(current_player)
 
       unless move.match(/^[a-c][1-3]$/)
         puts 'Your move was not recognized.'

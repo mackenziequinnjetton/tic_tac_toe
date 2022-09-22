@@ -17,11 +17,10 @@ class MoverTest < Minitest::Test
 
   def test_make_move
     $stdin = input_to_string_io('b1')
-    player = CompPlayer.new
     current_player = 1
 
-    exp = 'a1'
+    exp = 'b1'
 
-    assert_equal(exp, @test_mover.make_move(player: player, current_player: current_player))
+    assert_equal(exp, @test_mover.make_move(current_player))
   end
 end

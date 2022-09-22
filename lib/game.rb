@@ -13,7 +13,6 @@ class Game
   attr_reader :current_player
 
   def initialize
-    @player = CompPlayer.new
     @current_player = 1
     @mover = Mover.new
     @board = Board.new
@@ -39,7 +38,7 @@ class Game
 
   def game_loop
     loop do
-      move = mover.make_move(player: player, current_player: current_player)
+      move = mover.make_move(current_player)
 
       board.process_move(move: move, current_player: current_player)
 

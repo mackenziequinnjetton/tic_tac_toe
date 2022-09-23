@@ -1,5 +1,5 @@
-require './board'
-require './input_to_string_io'
+require_relative '../lib/board'
+require_relative './helpers/input_to_string_io'
 
 require 'minitest/autorun'
 

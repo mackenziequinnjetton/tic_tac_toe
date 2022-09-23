@@ -1,5 +1,5 @@
-require './game'
-require './input_to_string_io'
+require_relative '../lib/game'
+require_relative './helpers/input_to_string_io'
 
 require 'minitest/autorun'
 require 'stringio'

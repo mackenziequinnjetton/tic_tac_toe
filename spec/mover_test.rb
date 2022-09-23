@@ -1,5 +1,5 @@
-require './input_to_string_io'
-require './mover'
+require_relative './helpers/input_to_string_io'
+require_relative '../lib/mover'
 
 require 'minitest/autorun'
 

@@ -10,8 +10,8 @@ Tic Tac Toe program for 8th Light apprenticeship.
 
 `cd` into local project root
 
-`ruby index.rb`
+`$ ./tic_tac_toe`
 
 ## Testing
 
-`rake`
+`$ rake`

@@ -1,5 +1,5 @@
-require_relative '../lib/board'
-require_relative '../lib/game_end_checker'
+require 'board'
+require 'game_end_checker'
 
 require 'minitest/autorun'
 

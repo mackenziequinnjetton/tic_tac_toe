@@ -1,5 +1,5 @@
-require_relative '../lib/board'
-require_relative '../lib/win_patterns'
+require 'board'
+require 'win_patterns'
 
 require 'minitest/autorun'
 

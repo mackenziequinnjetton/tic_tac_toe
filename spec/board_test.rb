@@ -47,4 +47,29 @@ class BoardTest < Minitest::Test
 
     assert_output(display_exp) { @test_board.display }
   end
+
+  def display_exp2
+    "   a     b     c\n" \
+    "      |     |\n" \
+    "1  X  |  -  |  -\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "2  -  |  -  |  -\n" \
+    " _____|_____|_____\n" \
+    "      |     |\n" \
+    "3  -  |  -  |  -\n" \
+    "      |     |\n"
+  end
+
+  def test_display_board_with_single_computer_move
+    player = CompPlayer.new
+    current_player = 1
+
+    @test_board.process_move(
+      move: player.get_move(current_player: current_player),
+      current_player: current_player
+    )
+
+    assert_output(display_exp2) { @test_board.display }
+  end
 end

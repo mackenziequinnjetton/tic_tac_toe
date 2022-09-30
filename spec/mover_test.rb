@@ -15,12 +15,9 @@ class MoverTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def current_player
-    2
-  end
-
   def test_make_move
     $stdin = input_to_string_io('b1')
+    current_player = 1
 
     exp = 'b1'
 

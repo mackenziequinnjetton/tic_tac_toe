@@ -5,7 +5,7 @@ require 'game_end_checker'
 class Game
   private
 
-  attr_reader :board, :game_end_checker, :mover
+  attr_reader :player, :board, :game_end_checker, :mover
   attr_writer :current_player
 
   public

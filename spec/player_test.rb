@@ -9,10 +9,6 @@ class PlayerTest < Minitest::Test
     @test_player = Player.new
   end
 
-  def test_player_implements_get_move
-    assert_respond_to(@test_player, :get_move)
-  end
-
   def test_get_move
     $stdin = input_to_string_io('c2')
     current_player = 1

@@ -10,6 +10,7 @@ class GameTest < Minitest::Test
 
   def setup
     @test_game = Game.new
+    $stdout = StringIO.new
   end
 
   def teardown

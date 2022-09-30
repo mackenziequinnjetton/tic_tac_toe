@@ -8,6 +8,7 @@ class MoverTest < Minitest::Test
 
   def setup
     @test_mover = Mover.new
+    $stdout = StringIO.new
   end
 
   def teardown

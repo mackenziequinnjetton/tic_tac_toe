@@ -26,23 +26,8 @@ class Game
     print_result(play_helper)
   end
 
-  def retrieve_opponent_choice
-    opponent_selection = nil
-    
-    loop do
-      puts 'Would you like to play against a human or a computer opponent? \
-            Please enter "human" or "computer".'
-      opponent_selection = gets.chomp.downcase
-      break if Set['human', 'computer'].include? opponent_selection
-
-      puts 'Your selection was not recognized, please try again.'
-    end
-    
-    self.opponent = if opponent_selection == 'human'
-                      Player.new
-                    else
-                      CompPlayer.new
-                    end
+  def choose_opponent
+    instantiate_opponent validate_opponent_selection
   end
 
   private
@@ -90,5 +75,32 @@ class Game
 
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)
+  end
+
+  def validate_opponent_selection
+    opponent_selection = nil
+
+    loop do
+      opponent_selection = gather_opponent_selection
+      break if Set['human', 'computer'].include? opponent_selection
+
+      puts 'Your selection was not recognized, please try again.'
+    end
+
+    opponent_selection
+  end
+
+  def gather_opponent_selection
+    puts 'Would you like to play against a human or a computer opponent? \
+          Please enter "human" or "computer".'
+    gets.chomp.downcase
+  end
+
+  def instantiate_opponent(opponent_selection)
+    self.opponent = if opponent_selection == 'human'
+                      Player.new
+                    else
+                      CompPlayer.new
+                    end
   end
 end

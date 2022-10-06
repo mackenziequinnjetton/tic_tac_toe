@@ -39,7 +39,7 @@ class GameTest < Minitest::Test
   def test_choose_human_opponent
     $stdin = input_to_string_io('human')
 
-    @test_game.retrieve_opponent_choice
+    @test_game.choose_opponent
 
     assert_kind_of(Player, @test_game.opponent)
   end
@@ -47,7 +47,7 @@ class GameTest < Minitest::Test
   def test_choose_computer_opponent
     $stdin = input_to_string_io('computer')
 
-    @test_game.retrieve_opponent_choice
+    @test_game.choose_opponent
 
     assert_kind_of(CompPlayer, @test_game.opponent)
   end

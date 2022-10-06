@@ -1,5 +1,6 @@
+require 'computer_opponent'
+
 require 'minitest/autorun'
-require_relative '../lib/computer_opponent'
 
 class ComputerOpponentTest < Minitest::Test
   def setup

@@ -1,5 +1,5 @@
-require_relative '../lib/human_opponent'
-require_relative './helpers/input_to_string_io'
+require 'human_opponent'
+require 'input_to_string_io'
 
 require 'minitest/autorun'
 

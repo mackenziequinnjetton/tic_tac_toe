@@ -1,6 +1,7 @@
 require 'mover'
 require 'board'
 require 'game_end_checker'
+require 'opponent_selector'
 
 class Game
   private
@@ -10,12 +11,13 @@ class Game
 
   public
 
-  attr_accessor :opponent
+  attr_accessor :opponent, :opponent_selector
   attr_reader :current_player
 
   def initialize
     @opponent = nil
     @current_player = 1
+    @opponent_selector = OpponentSelector.new
     @mover = Mover.new
     @board = Board.new
     @game_end_checker = GameEndChecker.new
@@ -24,10 +26,6 @@ class Game
   def play
     welcome_message
     print_result(play_helper)
-  end
-
-  def choose_opponent
-    instantiate_opponent validate_opponent_selection
   end
 
   private
@@ -75,32 +73,5 @@ class Game
 
   def switch_player
     self.current_player = (current_player == 1 ? 2 : 1)
-  end
-
-  def validate_opponent_selection
-    opponent_selection = nil
-
-    loop do
-      opponent_selection = gather_opponent_selection
-      break if Set['human', 'computer'].include? opponent_selection
-
-      puts 'Your selection was not recognized, please try again.'
-    end
-
-    opponent_selection
-  end
-
-  def gather_opponent_selection
-    puts 'Would you like to play against a human or a computer opponent? \
-          Please enter "human" or "computer".'
-    gets.chomp.downcase
-  end
-
-  def instantiate_opponent(opponent_selection)
-    self.opponent = if opponent_selection == 'human'
-                      Player.new
-                    else
-                      CompPlayer.new
-                    end
   end
 end

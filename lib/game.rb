@@ -25,6 +25,7 @@ class Game
 
   def play
     welcome_message
+    self.opponent = opponent_selector.choose_opponent
     print_result(play_helper)
   end
 

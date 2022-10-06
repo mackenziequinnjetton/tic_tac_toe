@@ -26,6 +26,10 @@ class Game
   def play
     welcome_message
     self.opponent = opponent_selector.choose_opponent
+    if opponent.is_a? CompPlayer
+      puts opponent.incomplete_message
+      return :incomplete
+    end
     print_result(play_helper)
   end
 

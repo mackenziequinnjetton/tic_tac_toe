@@ -62,7 +62,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_display_board_with_single_computer_move
-    player = CompPlayer.new
+    player = ComputerOpponent.new
     current_player = 1
 
     @test_board.process_move(

@@ -1,4 +1,4 @@
-class CompPlayer
+class ComputerOpponent
   def initialize; end
 
   def get_move(current_player)

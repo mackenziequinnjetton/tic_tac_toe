@@ -1,12 +1,12 @@
 require 'minitest/autorun'
-require_relative '../lib/comp_player'
+require_relative '../lib/computer_opponent'
 
-class CompPlayerTest < Minitest::Test
+class ComputerOpponentTest < Minitest::Test
   def setup
-    @test_comp_player = CompPlayer.new
+    @test_comp_player = ComputerOpponent.new
   end
 
-  def test_comp_player_gets_top_left_move
+  def test_computer_player_top_left_move
     current_player = 1
 
     assert_equal('a1', @test_comp_player.get_move(current_player: 1))

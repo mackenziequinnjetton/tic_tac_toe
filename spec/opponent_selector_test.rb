@@ -13,7 +13,7 @@ class OpponentSelectorTest < Minitest::Test
 
     result = @test_game.opponent_selector.choose_opponent
 
-    assert_kind_of(Player, result)
+    assert_kind_of(HumanOpponent, result)
   end
 
   def test_choose_computer_opponent
@@ -21,6 +21,6 @@ class OpponentSelectorTest < Minitest::Test
 
     result = @test_game.opponent_selector.choose_opponent
 
-    assert_kind_of(CompPlayer, result)
+    assert_kind_of(ComputerOpponent, result)
   end
 end

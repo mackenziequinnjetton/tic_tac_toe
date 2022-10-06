@@ -5,14 +5,16 @@ require 'game_end_checker'
 class Game
   private
 
-  attr_reader :player, :board, :game_end_checker, :mover
+  attr_reader :board, :game_end_checker, :mover
   attr_writer :current_player
 
   public
 
+  attr_accessor :opponent
   attr_reader :current_player
 
   def initialize
+    @opponent = nil
     @current_player = 1
     @mover = Mover.new
     @board = Board.new
@@ -22,6 +24,25 @@ class Game
   def play
     welcome_message
     print_result(play_helper)
+  end
+
+  def retrieve_opponent_choice
+    opponent_selection = nil
+    
+    loop do
+      puts 'Would you like to play against a human or a computer opponent? \
+            Please enter "human" or "computer".'
+      opponent_selection = gets.chomp.downcase
+      break if Set['human', 'computer'].include? opponent_selection
+
+      puts 'Your selection was not recognized, please try again.'
+    end
+    
+    self.opponent = if opponent_selection == 'human'
+                      Player.new
+                    else
+                      CompPlayer.new
+                    end
   end
 
   private

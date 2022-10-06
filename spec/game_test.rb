@@ -43,4 +43,12 @@ class GameTest < Minitest::Test
 
     assert_kind_of(Player, @test_game.opponent)
   end
+
+  def test_choose_computer_opponent
+    $stdin = input_to_string_io('computer')
+
+    @test_game.retrieve_opponent_choice
+
+    assert_kind_of(CompPlayer, @test_game.opponent)
+  end
 end

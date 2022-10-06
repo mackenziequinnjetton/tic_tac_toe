@@ -32,6 +32,11 @@ class GameTest < Minitest::Test
     assert_equal(:draw, @test_game.play)
   end
 
+  def test_play_computer
+    $stdin = input_to_string_io('computer')
+    assert_equal(:incomplete, @test_game.play)
+  end
+
   def test_implements_current_player
     assert_respond_to(@test_game, :current_player)
   end

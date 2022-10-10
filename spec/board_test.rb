@@ -48,6 +48,7 @@ class BoardTest < Minitest::Test
     assert_output(display_exp) { @test_board.display }
   end
 
+  '''
   def display_exp2
     "   a     b     c\n" \
     "      |     |\n" \
@@ -72,4 +73,5 @@ class BoardTest < Minitest::Test
 
     assert_output(display_exp2) { @test_board.display }
   end
+  '''
 end

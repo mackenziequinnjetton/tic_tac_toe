@@ -1,18 +1,21 @@
 require 'mover'
 require 'board'
 require 'game_end_checker'
+require 'opponent_selector'
 
 class Game
   private
 
-  attr_reader :player, :board, :game_end_checker, :mover
+  attr_reader :board, :game_end_checker, :mover
   attr_writer :current_player
 
   public
 
+  attr_accessor :opponent, :opponent_selector
   attr_reader :current_player
 
   def initialize
+    @opponent = nil
     @current_player = 1
     @mover = Mover.new
     @board = Board.new

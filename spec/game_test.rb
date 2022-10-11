@@ -1,7 +1,6 @@
 require 'game'
 require 'input_to_string_io'
 
-
 require 'minitest/autorun'
 require 'stringio'
 

@@ -17,7 +17,6 @@ class Game
   def initialize
     @opponent = nil
     @current_player = 1
-    @opponent_selector = OpponentSelector.new
     @mover = Mover.new
     @board = Board.new
     @game_end_checker = GameEndChecker.new

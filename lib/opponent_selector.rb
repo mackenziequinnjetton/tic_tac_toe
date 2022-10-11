@@ -1,6 +1,4 @@
 class OpponentSelector
-  def initialize; end
-
   def choose_opponent
     instantiate_opponent validate_opponent_selection
   end

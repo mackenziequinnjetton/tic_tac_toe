@@ -11,9 +11,9 @@ class GameEndChecker
     @win_patterns = WinPatterns.new
   end
 
-  def check_game_end(board:, current_player:)
-    if winner?(board: board, current_player: current_player)
-      current_player == 1 ? :winner_p1 : :winner_p2
+  def check_game_end(board:, current_player_number:)
+    if winner?(board:, current_player_number:)
+      current_player_number == 1 ? :winner_p1 : :winner_p2
     elsif draw?(board)
       :draw
     end
@@ -21,8 +21,8 @@ class GameEndChecker
 
   private
 
-  def winner?(board:, current_player:)
-    win_pattern_array = win_pattern_array(board: board, str: current_player_string(current_player))
+  def winner?(board:, current_player_number:)
+    win_pattern_array = win_pattern_array(board:, str: current_player_string(current_player_number))
 
     win_pattern_array.any? true
   end
@@ -34,20 +34,20 @@ class GameEndChecker
     false
   end
 
-  def current_player_string(current_player)
-    current_player == 1 ? 'X' : 'O'
+  def current_player_string(current_player_number)
+    current_player_number == 1 ? 'X' : 'O'
   end
 
   def win_pattern_array(board:, str:)
     [
-      win_patterns.win_pattern1?(board: board, str: str),
-      win_patterns.win_pattern2?(board: board, str: str),
-      win_patterns.win_pattern3?(board: board, str: str),
-      win_patterns.win_pattern4?(board: board, str: str),
-      win_patterns.win_pattern5?(board: board, str: str),
-      win_patterns.win_pattern6?(board: board, str: str),
-      win_patterns.win_pattern7?(board: board, str: str),
-      win_patterns.win_pattern8?(board: board, str: str)
+      win_patterns.win_pattern1?(board:, str:),
+      win_patterns.win_pattern2?(board:, str:),
+      win_patterns.win_pattern3?(board:, str:),
+      win_patterns.win_pattern4?(board:, str:),
+      win_patterns.win_pattern5?(board:, str:),
+      win_patterns.win_pattern6?(board:, str:),
+      win_patterns.win_pattern7?(board:, str:),
+      win_patterns.win_pattern8?(board:, str:)
     ]
   end
 end

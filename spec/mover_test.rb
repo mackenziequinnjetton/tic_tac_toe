@@ -16,12 +16,15 @@ class MoverTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def test_make_move
+  def test_make_move_human_opponent
     $stdin = input_to_string_io('b1')
-    current_player = 1
+    current_player_number = 1
+    opponent = HumanPlayer.new
+    board = Board.new
 
     exp = 'b1'
+    act = @test_mover.make_move(current_player_number:, player_or_opponent: opponent, board:)
 
-    assert_equal(exp, @test_mover.make_move(current_player))
+    assert_equal(exp, act)
   end
 end

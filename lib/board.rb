@@ -11,16 +11,10 @@ class Board
     @row3 = row3
   end
 
-  def process_move(move:, current_player: 1)
-    move_parts = move.split('')
+  def process_move(move:, current_player_number: 1)
+    move = (move.is_a?(Hash) ? move : process_move_helper(move))
 
-    move_y_hash = Hash['1' => :row1, '2' => :row2, '3' => :row3]
-    move_x_hash = Hash['a' => :col_a=, 'b' => :col_b=, 'c' => :col_c=]
-
-    move_y = move_y_hash[move_parts[1]]
-    move_x = move_x_hash[move_parts[0]]
-
-    store_move(move_hash: Hash[row: move_y, col: move_x], current_player: )
+    store_move(move:, current_player_number:)
   end
 
   def display
@@ -38,11 +32,23 @@ class Board
 
   private
 
-  def store_move(move_hash:, current_player: 1)
-    row = move_hash[:row]
-    col = move_hash[:col]
+  def process_move_helper(move)
+    move_parts = move.split('')
 
-    send(row).send(col, (current_player == 1 ? 'X' : 'O'))
+    move_y_hash = Hash['1' => :row1, '2' => :row2, '3' => :row3]
+    move_x_hash = Hash['a' => :col_a=, 'b' => :col_b=, 'c' => :col_c=]
+
+    move_y = move_y_hash[move_parts[1]]
+    move_x = move_x_hash[move_parts[0]]
+
+    Hash[row: move_y, col: move_x]
+  end
+
+  def store_move(move:, current_player_number: 1)
+    row = move[:row]
+    col = move[:col]
+
+    send(row).send(col, (current_player_number == 1 ? 'X' : 'O'))
   end
 
   def each

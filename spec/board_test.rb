@@ -13,7 +13,7 @@ class BoardTest < Minitest::Test
   def test_process_move
     @test_board.process_move(
       move: 'c2',
-      current_player: 1
+      current_player_number: 1
     )
 
     exp = Board.new(row2: BoardRow.new(col_c: 'X')).row2.col_c
@@ -37,41 +37,14 @@ class BoardTest < Minitest::Test
   def test_display
     @test_board.process_move(
       move: 'b1',
-      current_player: 1
+      current_player_number: 1
     )
 
     @test_board.process_move(
       move: 'a3',
-      current_player: 2
+      current_player_number: 2
     )
 
     assert_output(display_exp) { @test_board.display }
   end
-
-  '''
-  def display_exp2
-    "   a     b     c\n" \
-    "      |     |\n" \
-    "1  X  |  -  |  -\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "2  -  |  -  |  -\n" \
-    " _____|_____|_____\n" \
-    "      |     |\n" \
-    "3  -  |  -  |  -\n" \
-    "      |     |\n"
-  end
-
-  def test_display_board_with_single_computer_move
-    player = ComputerOpponent.new
-    current_player = 1
-
-    @test_board.process_move(
-      move: player.get_move(current_player: current_player),
-      current_player: current_player
-    )
-
-    assert_output(display_exp2) { @test_board.display }
-  end
-  '''
 end

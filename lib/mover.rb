@@ -1,9 +1,11 @@
 class Mover
   def initialize; end
 
-  def make_move(current_player)
+  def make_move(current_player_number:, player_or_opponent:, board:)
     loop do
-      move = get_move(current_player)
+      move = player_or_opponent.get_move(current_player_number:, board:)
+
+      return move if move.is_a?(Hash)
 
       unless move.match(/^[a-c][1-3]$/)
         puts 'Your move was not recognized.'
@@ -12,12 +14,5 @@ class Mover
 
       return move
     end
-  end
-
-  private
-
-  def get_move(current_player)
-    puts "Player #{current_player}, please enter your move (ex: b2)"
-    gets.chomp.downcase
   end
 end

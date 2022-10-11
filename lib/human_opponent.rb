@@ -1,8 +1,4 @@
-class HumanOpponent
-  def initialize; end
+require 'human_player'
 
-  def get_move(current_player)
-    puts "Player #{current_player}, please enter your move (ex: b2)"
-    gets.chomp.downcase
-  end
+class HumanOpponent < HumanPlayer
 end

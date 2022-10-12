@@ -33,21 +33,21 @@ class GameTest < Minitest::Test
   end
 
   def test_play_win_p1_computer_opponent
-    $stdin = input_to_string_io('computer', 'b3', 'b1', 'b2')
+    $stdin = input_to_string_io('computer', 'first', 'b3', 'b1', 'b2')
     assert_equal(:winner_p1, @test_game.play)
   end
 
   def test_play_win_p2_computer_opponent
-    $stdin = input_to_string_io('computer', 'c3', 'b2', 'b3')
+    $stdin = input_to_string_io('computer', 'second', 'c3', 'b2')
     assert_equal(:winner_p2, @test_game.play)
   end
 
   def test_play_draw_computer_opponent
-    $stdin = input_to_string_io('computer', 'a2', 'b1', 'b2', 'a3', 'c3')
+    $stdin = input_to_string_io('computer', 'second', 'a2', 'c1', 'c3', 'b3')
     assert_equal(:draw, @test_game.play)
   end
 
-  def test_implements_current_player
+  def test_implements_current_player_number
     assert_respond_to(@test_game, :current_player_number)
   end
 end

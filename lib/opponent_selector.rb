@@ -1,3 +1,6 @@
+require 'computer_opponent'
+require 'human_opponent'
+
 class OpponentSelector
   def initialize; end
 

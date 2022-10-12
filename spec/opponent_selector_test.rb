@@ -5,6 +5,7 @@ require 'minitest/autorun'
 class OpponentSelectorTest < Minitest::Test
   include InputToStringIo
   def setup
+    $stdout = StringIO.new
     @test_game = Game.new
   end
 

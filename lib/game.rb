@@ -2,22 +2,25 @@ require 'mover'
 require 'board'
 require 'game_end_checker'
 require 'opponent_selector'
+require 'human_player'
+require 'message_displayer'
+require 'computer_opponent'
 
 class Game
   private
 
   attr_reader :board, :game_end_checker, :mover, :player
-  attr_writer :current_player_number
 
   public
 
-  attr_accessor :opponent, :opponent_selector
-  attr_reader :current_player_number
+  attr_accessor :opponent, :opponent_selector, :current_player_number
+  attr_reader :message_displayer
 
   def initialize
     @player = HumanPlayer.new
     @opponent = nil
-    @current_player_number = 1
+    @current_player_number = nil
+    @message_displayer = MessageDisplayer.new
     @opponent_selector = OpponentSelector.new
     @mover = Mover.new
     @board = Board.new
@@ -25,16 +28,14 @@ class Game
   end
 
   def play
-    welcome_message
+    puts message_displayer.welcome_message
     self.opponent = opponent_selector.choose_opponent
-    print_result(play_helper)
+    self.current_player_number =
+      opponent.is_a?(ComputerOpponent) ? @message_displayer.go_first_or_second : 1
+    message_displayer.game_result(play_helper)
   end
 
   private
-
-  def welcome_message
-    puts 'Welcome to Tic Tac Toe!'
-  end
 
   def play_helper
     board.display
@@ -51,27 +52,15 @@ class Game
 
       game_end_result = game_end_checker.check_game_end(board:, current_player_number:)
 
-      return game_end_result if %i[winner_p1 winner_p2 draw].include? game_end_result
+      if %i[winner_p1 winner_p2 draw].include? game_end_result
+        board.display
+        return game_end_result
+      end
 
       board.display
 
       switch_player
     end
-  end
-
-  def print_result(result)
-    board.display
-
-    case result
-    when :winner_p1
-      puts 'Player 1 wins!'
-    when :winner_p2
-      puts 'Player 2 wins!'
-    else
-      puts 'The game was a draw. Better luck next time!'
-    end
-
-    result
   end
 
   def switch_player

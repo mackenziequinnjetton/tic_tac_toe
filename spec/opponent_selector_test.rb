@@ -1,4 +1,5 @@
 require 'input_to_string_io'
+require 'set'
 
 require 'minitest/autorun'
 

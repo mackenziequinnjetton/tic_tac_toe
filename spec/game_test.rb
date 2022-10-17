@@ -17,19 +17,24 @@ class GameTest < Minitest::Test
     $stdin = STDIN
   end
 
-  def test_play_win_p1
-    $stdin = input_to_string_io('b2', 'b1', 'c3', 'a3', 'a1')
+  def test_play_win_p1_human
+    $stdin = input_to_string_io('human', 'b2', 'b1', 'c3', 'a3', 'a1')
     assert_equal(:winner_p1, @test_game.play)
   end
 
-  def test_play_win_p2
-    $stdin = input_to_string_io('a1', 'c3', 'b3', 'c1', 'b1', 'c2')
+  def test_play_win_p2_human
+    $stdin = input_to_string_io('human', 'a1', 'c3', 'b3', 'c1', 'b1', 'c2')
     assert_equal(:winner_p2, @test_game.play)
   end
 
-  def test_play_draw
-    $stdin = input_to_string_io('c3', 'b3', 'c2', 'c1', 'b2', 'a1', 'b1', 'a2', 'a3')
+  def test_play_draw_human
+    $stdin = input_to_string_io('human', 'c3', 'b3', 'c2', 'c1', 'b2', 'a1', 'b1', 'a2', 'a3')
     assert_equal(:draw, @test_game.play)
+  end
+
+  def test_play_computer
+    $stdin = input_to_string_io('computer')
+    assert_equal(:incomplete, @test_game.play)
   end
 
   def test_implements_current_player

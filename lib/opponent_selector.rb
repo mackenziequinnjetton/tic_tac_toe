@@ -26,9 +26,9 @@ class OpponentSelector
 
   def instantiate_opponent(opponent_selection)
     if opponent_selection == 'human'
-      Player.new
+      HumanOpponent.new
     else
-      CompPlayer.new
+      ComputerOpponent.new
     end
   end
 end
